@@ -20,14 +20,7 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
-
-## Requirements
-
-## Download and Installation
-
-## Known Issues
-<!-- You may simply state "No known issues. -->
+<This has the solution for the ABAP Developer Challenge.>
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
