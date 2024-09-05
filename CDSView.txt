@@ -1,0 +1,49 @@
+@AbapCatalog.viewEnhancementCategory: [#NONE]
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'BASE VIEW ENTITY FOR Zxxx_TRAVEL'
+@Metadata.ignorePropagatedAnnotations: true
+@Metadata.allowExtensions: true
+@ObjectModel.usageType:{
+    serviceQuality: #X,
+    sizeCategory: #S,
+    dataClass: #MIXED
+}
+define view entity Zxxx_TRAVEL_BASE
+  as select from zxxx_travel as travel
+
+  association [1..1] to /DMO/I_Overall_Status_VH_Text as _Status on $projection.status = _Status.OverallStatus
+{
+  key travel_id,
+      description,
+      concat_with_space(travel_id, description, 1) as descriptionExtended,
+      @Semantics.amount.currencyCode: 'currencyCode'
+      total_price                                  as totalPrice,
+      currency_code                                as currencyCode,
+      @EndUserText.label: 'Price in Common USD Currency'
+      cast('USD' as abap.cuky)                     as usd,
+      @Semantics.amount.currencyCode: 'usd'
+      currency_conversion(
+      client => $session.client,
+      amount => total_price,
+      source_currency => currency_code,
+      target_currency => cast('USD' as abap.cuky),
+      round => '',
+      exchange_rate_type => cast('M' as abap.char(4)),
+      exchange_rate_date => $session.system_date,
+      error_handling => 'SET_TO_NULL'
+      )                                            as usdPrice,
+      concat_with_space( cast(total_price as abap.sstring(20)), currency_code, 1) as priceDescExtended,
+      @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Overall_Status_VH', element: 'OverallStatus' }}]
+      @ObjectModel.text.element: ['statusDescription'] 
+      status,
+      @UI.hidden: true
+      _Status.Text                           as statusDescription,
+
+      case
+      when status = 'A'
+      then 3
+      when status = 'O'
+      then 2
+      else 1
+      end                                          as Criticality
+}

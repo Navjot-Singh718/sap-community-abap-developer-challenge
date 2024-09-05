@@ -1,0 +1,16 @@
+@EndUserText.label : 'Dev Challenge copy of /dmo/travel'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zxxx_travel {
+
+  key client    : abap.clnt not null;
+  key travel_id : /dmo/travel_id not null;
+  description   : /dmo/description;
+  @Semantics.amount.currencyCode : 'zxxx_travel.currency_code'
+  total_price   : /dmo/total_price;
+  currency_code : /dmo/currency_code;
+  status        : /dmo/travel_status;
+
+}
