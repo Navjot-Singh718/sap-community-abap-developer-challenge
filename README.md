@@ -23,7 +23,7 @@ Please edit this file as it is the primary description file for your project. Yo
 < This has the solution for the ABAP Developer Challenge.>
 
 ## Solution
-< This is the solution for Task 3 >
+< All the Solution is available in the folder 'Solution'  >
 
 
 ## How to obtain support
