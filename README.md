@@ -23,7 +23,7 @@ Please edit this file as it is the primary description file for your project. Yo
 < This has the solution for the ABAP Developer Challenge.>
 
 ## Solution
-< All the Solution is available in the folder 'Solution' >
+< All the Solution is available in the folder 'Solution' : https://github.com/SAP-samples/sap-community-abap-developer-challenge/tree/main/Solution >
 
 
 ## How to obtain support
