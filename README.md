@@ -20,7 +20,11 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-<This has the solution for the ABAP Developer Challenge.>
+< This has the solution for the ABAP Developer Challenge.>
+
+## Solution
+< This is the solution for Task 3 >
+
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
