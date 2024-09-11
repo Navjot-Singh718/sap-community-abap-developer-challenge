@@ -1,3 +1,7 @@
+# ABAP Developer Challenge
+[![REUSE status](
+https://api.reuse.software/badge/github.com/SAP-samples/sap-community-abap-developer-challenge)](https://api.reuse.software/info/github.com/SAP-samples/sap-community-abap-developer-challenge)
+
 # Containing Files
 
 1. The LICENSE file:
