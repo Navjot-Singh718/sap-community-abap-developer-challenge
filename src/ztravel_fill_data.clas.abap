@@ -15,14 +15,8 @@ CLASS ztravel_fill_data IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
 
-    DELETE FROM ZSS_TRAVEl.
 
-    INSERT zss_travel FROM ( SELECT FROM /dmo/travel FIELDS travel_id, description, total_price, currency_code,
-    CASE
-      WHEN total_price > 4500 THEN 'Business'
-      WHEN total_price > 300 THEN 'Premium'
-      else 'Economy'
-      END
-  ).
+   INSERT ztravel_2025 FROM ( SELECT FROM /dmo/travel FIELDS travel_id, total_price, currency_code, description ).
+
   ENDMETHOD.
 ENDCLASS.
