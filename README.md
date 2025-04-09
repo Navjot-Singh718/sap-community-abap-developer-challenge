@@ -15,14 +15,16 @@ Please edit this file as it is the primary description file for your project. Yo
 
 # 2025 ABAP Developer Challenge Base Data Model
 
-1. Create a table with the following fields:
+1. Create a database tabletable to store the Travel data.
+This Travel entity contains Travel ID, Description, Total Price and Currency Code.
+
 <pre lang="ABAP">
 @EndUserText.label : 'Dev Challenge copy of /dmo/travel'
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #RESTRICTED
-define table zss_travel {
+define table ztravel_2025 {
 
   key client    : abap.clnt not null;
   key travel_id : /dmo/travel_id not null;
@@ -32,6 +34,61 @@ define table zss_travel {
   currency_code : /dmo/currency_code;
   include zss_travel_struc;
 
+}
+</pre>
+
+2.  Create data generator class
+Create an ABAP class to generate demo travel data.
+<pre lang="ABAP">
+CLASS ztravel_fill_data DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+CLASS ztravel_fill_data IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+
+   INSERT ztravel_2025 FROM ( SELECT FROM /dmo/travel FIELDS travel_id, total_price, currency_code, description ).
+
+  ENDMETHOD.
+ENDCLASS.
+</pre>
+
+Execute the class and do a data preview of the table to make sure data got filled.
+
+3. Create a view entity based on the database table above.
+
+<pre lang="ABAP">
+@AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Travel View Entity'
+@Metadata.ignorePropagatedAnnotations: true
+@AbapCatalog.extensibility: {
+  extensible: true,
+  elementSuffix: 'ZAC',
+  quota: {
+    maximumFields: 500,
+    maximumBytes: 5000
+  },
+  dataSources: [ '_Travel' ]
+}
+define view entity ZITRAVEL_2025 
+  as select from ztravel_2025 as _Travel
+{
+  key travel_id     as TravelId,
+      description   as Description,
+      @Semantics.amount.currencyCode: 'CurrencyCode'
+      total_price   as TotalPrice,
+      currency_code as CurrencyCode
 }
 </pre>
 
