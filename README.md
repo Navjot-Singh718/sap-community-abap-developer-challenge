@@ -17,7 +17,7 @@ Please edit this file as it is the primary description file for your project. Yo
 
 1. Create a database table to store the Travel data.
 
-This Travel entity contains Travel ID, Description, Total Price and Currency Code.
+   This Travel entity contains Travel ID, Description, Total Price and Currency Code.
 
 <pre lang="ABAP">
 @EndUserText.label : 'Dev Challenge copy of /dmo/travel'
@@ -69,7 +69,7 @@ ENDCLASS.
 Execute the class and do a data preview of the table to make sure data got filled.
 
 
-3. Create a view entity based on the database table above.
+3.  Create a view entity based on the database table above.
 
 <pre lang="ABAP">
 @AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
