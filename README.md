@@ -13,6 +13,28 @@ The [Reuse Tool](https://reuse.software/) must be used for your samples project.
 3. The README.md file (this file):
 Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
 
+# 2025 ABAP Developer Challenge Base Data Model
+
+1. Create a table with the following fields:
+<pre lang="ABAP">
+@EndUserText.label : 'Dev Challenge copy of /dmo/travel'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zss_travel {
+
+  key client    : abap.clnt not null;
+  key travel_id : /dmo/travel_id not null;
+  description   : /dmo/description;
+  @Semantics.amount.currencyCode : 'zss_travel.currency_code'
+  total_price   : /dmo/total_price;
+  currency_code : /dmo/currency_code;
+  include zss_travel_struc;
+
+}
+</pre>
+
 # ABAP Developer Challenge Solution
 <!-- Please include descriptive title -->
 
