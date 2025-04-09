@@ -16,7 +16,7 @@ Please edit this file as it is the primary description file for your project. Yo
 # 2025 ABAP Developer Challenge Base Data Model
 
 1. Create a database tabletable to store the Travel data.
-&nbsp;
+
 This Travel entity contains Travel ID, Description, Total Price and Currency Code.
 
 <pre lang="ABAP">
@@ -39,7 +39,9 @@ define table ztravel_2025 {
 </pre>
 
 2.  Create data generator class
-Create an ABAP class to generate demo travel data.
+    
+    Create an ABAP class to generate demo travel data.
+
 <pre lang="ABAP">
 CLASS ztravel_fill_data DEFINITION
   PUBLIC
