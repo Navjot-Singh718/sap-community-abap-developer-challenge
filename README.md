@@ -15,7 +15,7 @@ Please edit this file as it is the primary description file for your project. Yo
 
 # 2025 ABAP Developer Challenge Base Data Model
 
-1. Create a database tabletable to store the Travel data.
+1. Create a database table to store the Travel data.
 
 This Travel entity contains Travel ID, Description, Total Price and Currency Code.
 
@@ -68,6 +68,7 @@ ENDCLASS.
 
 Execute the class and do a data preview of the table to make sure data got filled.
 
+
 3. Create a view entity based on the database table above.
 
 <pre lang="ABAP">
@@ -94,6 +95,7 @@ define view entity ZITRAVEL_2025
       currency_code as CurrencyCode
 }
 </pre>
+
 
 # ABAP Developer Challenge Solution
 <!-- Please include descriptive title -->
