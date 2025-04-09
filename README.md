@@ -16,6 +16,7 @@ Please edit this file as it is the primary description file for your project. Yo
 # 2025 ABAP Developer Challenge Base Data Model
 
 1. Create a database tabletable to store the Travel data.
+&nbsp;
 This Travel entity contains Travel ID, Description, Total Price and Currency Code.
 
 <pre lang="ABAP">
