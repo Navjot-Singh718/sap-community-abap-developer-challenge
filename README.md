@@ -29,14 +29,30 @@ define table ztravel_2025 {
 
   key client    : abap.clnt not null;
   key travel_id : /dmo/travel_id not null;
-  description   : /dmo/description;
   @Semantics.amount.currencyCode : 'zss_travel.currency_code'
   total_price   : /dmo/total_price;
   currency_code : /dmo/currency_code;
-  include zss_travel_struc;
+  include ztravel_struc_2025;
 
 }
 </pre>
+
+2.  Create a structure which is a standard extension of the table.
+    ZTRAVEL_2025.
+    
+<pre lang="ABAP">
+@EndUserText.label : 'Structure of Travel Data'
+@AbapCatalog.enhancement.category : #EXTENSIBLE_ANY
+@AbapCatalog.enhancement.fieldSuffix : 'ZAC'
+@AbapCatalog.enhancement.quotaMaximumFields : 350
+@AbapCatalog.enhancement.quotaMaximumBytes : 3500
+define structure ztravel_struc_2025 {
+
+  description : /dmo/description;
+
+}
+</pre> 
+
 
 2.  Create data generator class
     
