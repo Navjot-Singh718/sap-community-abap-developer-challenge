@@ -125,7 +125,7 @@ Do a data preview of the view entity and make sure you see data in all the colum
 Now you are ready to start the challenge. Proceed with the next steps in the blogpost to unlock question for each step.
 
 
-# ABAP Developer Challenge Solution
+# 2024 ABAP Developer Challenge Solution
 <!-- Please include descriptive title -->
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
