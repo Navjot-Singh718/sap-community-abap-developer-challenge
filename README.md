@@ -61,8 +61,10 @@ define structure ztravel_struc_xxx {
 }
 </pre> 
 
+Activate the structure first and then the table to complete the table creation.
 
-2.  Next we will create data generator class to fill data to this table by fetching data from 
+
+3.  Next we will create data generator class to fill data to this table by fetching data from 
     /DMO/TRAVEL table.
     
 
@@ -90,10 +92,10 @@ CLASS ztravel_fill_data_xxx IMPLEMENTATION.
 ENDCLASS.
 </pre>
 
-Execute the class and do a data preview of the table to make sure you have enough demo data to proceed.
+Activate and execute the class and do a data preview of the table to make sure you have enough demo data to proceed.
 
 
-3.  Create a CDS view entity based on the database table above.
+4.  Create a CDS view entity based on the database table above.
 
 <pre lang="ABAP">
 @AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
@@ -120,7 +122,7 @@ define view entity ZITRAVEL_XXX
 }
 </pre>
 
-Do a data preview of the view entity and make sure you see data in all the columns available.
+Activate the view and do a data preview of the view entity and make sure you see data in all the columns available.
 
 Now you are ready to start the challenge. Proceed with the next steps in the blogpost to unlock question for each step.
 
