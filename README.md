@@ -15,9 +15,9 @@ Please edit this file as it is the primary description file for your project. Yo
 
 # 2025 ABAP Developer Challenge Base Data Model
 
-The pre requisite to this challenge is to create the base model for Travel Data and be ready for extending them at each step to complete the challenge. Here we will be creating a standard-like database table with an existing include structure with 1 field. You will also create a data generator class to fill data to this table. Next you will create a CDS view entity for this database table. The steps to create each of these objects are mentioned below. Follow the steps carefully and do a data preview after each step to make sure you have enough demo data to proceed. 
+The pre requisite to this challenge is to create the base model for Travel Data and be ready for extending them at each step to complete the challenge. Here we will be creating a SAP-like database table with an existing include structure with 1 field. You will also create a data generator class to fill data to this table. Next you will create a CDS view entity for this database table. The steps to create each of these objects are mentioned below. Follow the steps carefully and do a data preview after each step to make sure you have enough demo data to proceed. 
 
-Note:- Please make sure to replace '2025' with a unique alphanumeric character of your choice for all the objects that you create.
+Note:- Please make sure to replace 'XXX' with a unique alphanumeric character of your choice for all the objects that you create.
 
 So let us start...
 
@@ -32,21 +32,21 @@ So let us start...
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #RESTRICTED
-define table ztravel_2025 {
+define table ztravel_xxx {
  
   key client    : abap.clnt not null;
   key travel_id : /dmo/travel_id not null;
-  @Semantics.amount.currencyCode : 'ztravel_2025.currency_code'
+  @Semantics.amount.currencyCode : 'ztravel_xxx.currency_code'
   total_price   : /dmo/total_price;
   currency_code : /dmo/currency_code;
-  include ztravel_struc_2025;
+  include ztravel_struc_xxx;
  
 }
 
 </pre>
 
 2.  Now create the structure included in the code above which will be an extension of the table.
-    ZTRAVEL_2025.
+    ZTRAVEL_XXX.
     
 <pre lang="ABAP">
 @EndUserText.label : 'Structure of Travel Data'
@@ -54,7 +54,7 @@ define table ztravel_2025 {
 @AbapCatalog.enhancement.fieldSuffix : 'ZAC'
 @AbapCatalog.enhancement.quotaMaximumFields : 350
 @AbapCatalog.enhancement.quotaMaximumBytes : 3500
-define structure ztravel_struc_2025 {
+define structure ztravel_struc_xxx {
  
   description : /dmo/description;
  
@@ -68,7 +68,7 @@ define structure ztravel_struc_2025 {
 
 <pre lang="ABAP">
 
-CLASS ztravel_fill_data DEFINITION
+CLASS ztravel_fill_data_xxx DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC .
@@ -80,11 +80,11 @@ CLASS ztravel_fill_data DEFINITION
 ENDCLASS.
  
  
-CLASS ztravel_fill_data IMPLEMENTATION.
+CLASS ztravel_fill_data_xxx IMPLEMENTATION.
  
   METHOD if_oo_adt_classrun~main.
  
-   INSERT ztravel_2025 FROM ( SELECT FROM /dmo/travel FIELDS travel_id, total_price, currency_code, description ).
+   INSERT ztravel_xxx FROM ( SELECT FROM /dmo/travel FIELDS travel_id, total_price, currency_code, description ).
  
   ENDMETHOD.
 ENDCLASS.
@@ -109,8 +109,8 @@ Execute the class and do a data preview of the table to make sure you have enoug
   },
   dataSources: [ '_Travel' ]
 }
-define view entity ZITRAVEL_2025
-  as select from ztravel_2025 as _Travel
+define view entity ZITRAVEL_XXX
+  as select from ztravel_xxx as _Travel
 {
   key travel_id     as TravelId,
       description   as Description,
