@@ -93,7 +93,7 @@ ENDCLASS.
 Execute the class and do a data preview of the table to make sure you have enough demo data to proceed.
 
 
-3.  Create a view entity based on the database table above.
+3.  Create a CDS view entity based on the database table above.
 
 <pre lang="ABAP">
 @AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
