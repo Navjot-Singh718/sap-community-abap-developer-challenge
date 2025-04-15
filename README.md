@@ -93,6 +93,7 @@ ENDCLASS.
 </pre>
 
 Activate and execute the class and do a data preview of the table to make sure you have enough demo data to proceed.
+Note: For standard SAP-delivered tables, you will not be able to do a Data Preview from ADT.
 
 
 4.  Create a CDS view entity based on the database table above.
