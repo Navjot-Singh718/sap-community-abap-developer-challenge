@@ -121,6 +121,11 @@ define view entity ZITRAVEL_XXX
       @Semantics.amount.currencyCode: 'CurrencyCode'
       total_price   as TotalPrice,
       currency_code as CurrencyCode
+   case
+   when total_price > 1000
+   then cast( total_price as abap.fltp ) * 0.10
+   else cast( 0 as abap.fltp)
+   end as discount
 }
 </pre>
 
