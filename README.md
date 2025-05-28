@@ -131,6 +131,7 @@ Note: For standard SAP-delivered tables, you will not be able to do a Data Previ
 }
 define view entity ZITRAVEL_885
   as select from ztravel_885 as _Travel
+   assocaition [0..*] to /DMO/I_BOOKING_I as _Booking on $projection/TravelId = _Booking.TravelID
 {
   key travel_id     as TravelId,
       description   as Description,
@@ -141,7 +142,15 @@ define view entity ZITRAVEL_885
    when total_price > 1000
    then cast( total_price as abap.fltp ) * 0.10
    else cast( 0 as abap.fltp )
-   end as discount
+   end as discount,
+   
+   _Booking.FlightDate as FlightDate,
+   Case
+   when  _Booking.FlightDate >= $session.system_date
+   then dats_days_between ( $session.system_date, _Booking.FlightDate )
+   else 0
+   end as days_until_flight
+   
 }
 </pre>
 
