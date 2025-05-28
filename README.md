@@ -131,7 +131,7 @@ Note: For standard SAP-delivered tables, you will not be able to do a Data Previ
 }
 define view entity ZITRAVEL_885
   as select from ztravel_885 as _Travel
-   assocaition [0..*] to /DMO/I_BOOKING_I as _Booking on $projection/TravelId = _Booking.TravelID
+   assocaition [0..*] to /DMO/I_BOOKING_U as _Booking on $projection/TravelId = _Booking.TravelID
 {
   key travel_id     as TravelId,
       description   as Description,
