@@ -32,29 +32,29 @@ So let us start...
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #RESTRICTED
-define table ztravel_xxx {
+define table ztravel_885 {
  
   key client    : abap.clnt not null;
   key travel_id : /dmo/travel_id not null;
-  @Semantics.amount.currencyCode : 'ztravel_xxx.currency_code'
+  @Semantics.amount.currencyCode : 'ztravel_885.currency_code'
   total_price   : /dmo/total_price;
   currency_code : /dmo/currency_code;
-  include ztravel_struc_xxx;
+  include ztravel_struc_885;
  
 }
 
 </pre>
 
 2.  Now create the structure included in the code above which will be an extension of the table.
-    ZTRAVEL_XXX.
+    ZTRAVEL_885.
     
 <pre lang="ABAP">
 @EndUserText.label : 'Structure of Travel Data'
 @AbapCatalog.enhancement.category : #EXTENSIBLE_ANY
-@AbapCatalog.enhancement.fieldSuffix : 'ZAC'
+@AbapCatalog.enhancement.fieldSuffix : 'ZNS'
 @AbapCatalog.enhancement.quotaMaximumFields : 350
 @AbapCatalog.enhancement.quotaMaximumBytes : 3500
-define structure ztravel_struc_xxx {
+define structure ztravel_struc_885 {
  
   description : /dmo/description;
  
@@ -63,6 +63,14 @@ define structure ztravel_struc_xxx {
 
 Activate the structure first and then the table to complete the table creation.
 
+3. Extend the database table ZTRAVEL from task 0 (pre-requisite) by adding a new field TravelType following SAP's extensibility naming conventions.
+<pre lang="ABAP">
+@EndUserText.label : 'Indirect Append Table for ZTRAVEL_885'
+@AbapCatalog.enhacement.category : #NOT_EXTENSIBLE
+   extend type ztravel_struc_885 with z885_s_ext_travel {
+   zztraveltype_zns : abap.char(20);
+   }
+   </pre>
 
 3.  Next we will create data generator class to fill data to this table by fetching data from 
     /DMO/TRAVEL table.
@@ -70,7 +78,7 @@ Activate the structure first and then the table to complete the table creation.
 
 <pre lang="ABAP">
 
-CLASS ztravel_fill_data_xxx DEFINITION
+CLASS ztravel_fill_data_885 DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC .
@@ -82,11 +90,20 @@ CLASS ztravel_fill_data_xxx DEFINITION
 ENDCLASS.
  
  
-CLASS ztravel_fill_data_xxx IMPLEMENTATION.
+CLASS ztravel_fill_data_885 IMPLEMENTATION.
  
   METHOD if_oo_adt_classrun~main.
  
-   INSERT ztravel_xxx FROM ( SELECT FROM /dmo/travel FIELDS travel_id, total_price, currency_code, description ).
+   INSERT ztravel_885 FROM ( SELECT FROM /dmo/travel FIELDS travel_id, 
+                                                            total_price, 
+                                                            currency_code, 
+                                                            description,
+                                                           CASE
+                                                             WHEN total_price > 4500 THEN 'Business'
+                                                             WHEN total_price > 3000 THEN 'Premium Economy'
+                                                             ELSE 'Economy'
+                                                             END
+                          ).
  
   ENDMETHOD.
 ENDCLASS.
@@ -106,15 +123,15 @@ Note: For standard SAP-delivered tables, you will not be able to do a Data Previ
 @Metadata.ignorePropagatedAnnotations: true
 @AbapCatalog.extensibility: {
   extensible: true,
-  elementSuffix: 'ZAC',
+  elementSuffix: 'ZNS',
   quota: {
     maximumFields: 500,
     maximumBytes: 5000
   },
   dataSources: [ '_Travel' ]
 }
-define view entity ZITRAVEL_XXX
-  as select from ztravel_xxx as _Travel
+define view entity ZITRAVEL_885
+  as select from ztravel_885 as _Travel
 {
   key travel_id     as TravelId,
       description   as Description,
