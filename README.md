@@ -50,7 +50,7 @@ define table ztravel_885 {
 <pre lang="ABAP">
 @EndUserText.label : 'Structure of Travel Data'
 @AbapCatalog.enhancement.category : #EXTENSIBLE_ANY
-@AbapCatalog.enhancement.fieldSuffix : 'ZNS'
+@AbapCatalog.enhancement.fieldSuffix : 'ZAC'
 @AbapCatalog.enhancement.quotaMaximumFields : 350
 @AbapCatalog.enhancement.quotaMaximumBytes : 3500
 define structure ztravel_struc_885 {
@@ -67,7 +67,7 @@ Activate the structure first and then the table to complete the table creation.
 @EndUserText.label : 'Indirect Append Table for ZTRAVEL_885'
 @AbapCatalog.enhacement.category : #NOT_EXTENSIBLE
    extend type ztravel_struc_885 with z885_s_ext_travel {
-   zztraveltype_zns : abap.char(20);
+   zztraveltype_ZAC : abap.char(20);
    }
    </pre>
 
@@ -122,7 +122,7 @@ Note: For standard SAP-delivered tables, you will not be able to do a Data Previ
 @Metadata.ignorePropagatedAnnotations: true
 @AbapCatalog.extensibility: {
   extensible: true,
-  elementSuffix: 'ZNS',
+  elementSuffix: 'ZAC',
   quota: {
     maximumFields: 500,
     maximumBytes: 5000
@@ -143,7 +143,7 @@ define view entity ZITRAVEL_885
 <pre lang="ABAP">
    extend view entity zitravel_885 with
    {
-   _Travel.zztraveltype_zns as zztraveltype_zns
+   _Travel.zztraveltype_ZAC as zztraveltype_ZAC
 }
 
    </pre>
