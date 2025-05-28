@@ -1,6 +1,5 @@
 # ABAP Developer Challenge
-[![REUSE status](
-https://api.reuse.software/badge/github.com/SAP-samples/sap-community-abap-developer-challenge)](https://api.reuse.software/info/github.com/SAP-samples/sap-community-abap-developer-challenge)
+[![REUSE status](https://api.reuse.software/badge/github.com/Navjot-Singh718/sap-community-abap-developer-challenge)](https://api.reuse.software/info/github.com/Navjot-Singh718/sap-community-abap-developer-challenge)
 
 # Containing Files
 
